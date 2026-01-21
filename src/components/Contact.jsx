@@ -1,9 +1,10 @@
 import React from 'react'
 import { openingHours, socials } from '../../constants'
 import { useGSAP } from '@gsap/react'
-import { SplitText } from 'gsap/all'
+import { SplitText, ScrollTrigger } from 'gsap/all'
 import gsap from 'gsap'
 
+gsap.registerPlugin(SplitText, ScrollTrigger)
 const Contact = () => {
     useGSAP(() => {
         const titleSplit = SplitText.create('#contact h2', {type:'words'});
@@ -64,8 +65,7 @@ const Contact = () => {
                 <div className='flex-center gap-5'>
                     {socials.map((social) => (
                         <a key={social.name} href={social.url} target='_blank' rel='noopener noreferrer' aria-label={social.name}>
-                            <img src={social.icon} />
-                        </a>
+                            <img src={social.icon} alt={social.name} />                        </a>
                     ))}
                 </div>
             </div>
